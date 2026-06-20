@@ -11,7 +11,7 @@ export const HeroSection = styled.section`
 `;
 
 export const Overlay = styled.div`
-  min-height: 500px;
+  min-height: 600px;
   width: 100%;
   background: rgba(0, 0, 0, 0.3);
   display: flex;
@@ -36,33 +36,77 @@ export const Title = styled.h1`
 export const DescriptionBlock = styled.div`
   display: flex;
   justify-content: center;
-  align-items: center;
-  gap: 24px;
+  align-items: flex-start;
+  gap: 16px;
   margin-bottom: 100px;
 `;
 
-export const Description = styled.p`
+export const LeftDescription = styled.p`
   width: 260px;
-  font-size: 16px;
+  font-size: 18px;
+  font-weight: 500;
   line-height: 1.6;
+  white-space: pre-line;
+  margin: 0;
+  position: relative;
+  left: -30px;
+  text-align: right;
+`;
+
+export const RightDescription = styled.p`
+  width: 260px;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.6;
+  white-space: pre-line;
+  margin: 0;
+  position: relative;
+  left: 30px;
+  text-align: left;
 `;
 
 export const Divider = styled.div`
   width: 1px;
-  height: 100px;
+  height: 150px;
   width: 3px;
   background-color: white;
 `;
 
+export const SearchWrapper = styled.div`
+  width: 550px;
+  height: 40px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  background: white;
+  border: 2px solid black;
+  border-radius: 14px;
+  overflow: hidden;
+`;
+
 export const SearchInput = styled.input`
-  width: 350px;
-  height: 45px;
+  flex: 1;
+  height: 100%;
   border: none;
-  border-radius: 24px;
-  padding: 0 20px;
-  font-size: 15px;
   outline: none;
-  &::placeholder {
-    color: #999;
+  padding: 0 18px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+`;
+
+export const SearchButton = styled.button`
+  width: 50px;
+  height: 100%;
+  border: none;
+  border-left: 2px solid black;
+  background-color: #ffb36c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
   }
 `;
