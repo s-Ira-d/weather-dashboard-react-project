@@ -47,24 +47,19 @@ export const NavLink = styled.a`
 `;
 
 export const Actions = styled.div`
+  margin-left: auto;
   display: flex;
   align-items: center;
-  gap: 16px;
-  margin-left: auto;
+  gap: 12px;
 `;
 
 export const RegisterButton = styled.button`
-  padding: 10px 20px;
+  padding: 8px 16px;
   border: none;
   border-radius: 8px;
-  background-color: #ffb36c;
-  color: black;
-  font-size: 14px;
+  background: #ffb36c;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  &:hover {
-    background-color: #ffb36c;
-  }
+  white-space: nowrap;
 `;
 
 export const Avatar = styled.img`
@@ -72,5 +67,44 @@ export const Avatar = styled.img`
   height: 40px;
   border-radius: 50%;
   object-fit: cover;
+  cursor: pointer;
+`;
+
+export const UserName = styled.span`
+  font-size: 14px;
+  font-weight: 600;
+`;
+
+export const ModalOverlay = styled.div`
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+`;
+
+export const Modal = styled.div`
+  width: 300px;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+`;
+
+export const Input = styled.input`
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+`;
+
+export const SubmitButton = styled.button`
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  background: #ffb36c;
   cursor: pointer;
 `;
