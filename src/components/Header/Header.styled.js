@@ -86,25 +86,77 @@ export const ModalOverlay = styled.div`
 `;
 
 export const Modal = styled.div`
-  width: 300px;
+  width: 600px;
+  padding: 30px;
   background: white;
-  padding: 20px;
-  border-radius: 10px;
+  border-radius: 50px;
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 35px;
+  }
+  label {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 14px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    position: relative;
+    left: -120px;
+  }
+  h3 {
+    margin: -10px 0 24px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 28px;
+  }
 `;
 
 export const Input = styled.input`
-  width: 100%;
-  margin-bottom: 10px;
-  padding: 8px;
+  width: 240%;
+  box-sizing: border-box;
+  padding: 18px 16px;
   border: 1px solid #ccc;
-  border-radius: 6px;
+  background-color: #e4e4e4;
+  border-radius: 8px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  &:focus {
+    outline: none;
+    border-color: #ffb36c;
+  }
 `;
 
 export const SubmitButton = styled.button`
-  width: 100%;
-  padding: 10px;
+  width: 140px;
+  height: 40px;
+  margin: 0px auto 0;
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   background: #ffb36c;
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
   cursor: pointer;
+  transition: 0.2s;
+  &:hover {
+    transform: translateY(-1px);
+  }
+`;
+
+export const BottomText = styled.p`
+  margin-top: 20px;
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: black;
+  span {
+    text-decoration: underline;
+    cursor: pointer;
+  }
 `;

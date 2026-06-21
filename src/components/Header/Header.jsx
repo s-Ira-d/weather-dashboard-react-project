@@ -13,6 +13,7 @@ import {
   Modal,
   Input,
   SubmitButton,
+  BottomText,
 } from "./Header.styled";
 
 import logo from "../../img/logo.png";
@@ -27,8 +28,8 @@ const Header = () => {
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  // load user from localStorage
   useEffect(() => {
     const savedUser = localStorage.getItem("user");
     if (savedUser) {
@@ -84,25 +85,48 @@ const Header = () => {
       {isOpen && (
         <ModalOverlay onClick={() => setIsOpen(false)}>
           <Modal onClick={(e) => e.stopPropagation()}>
-            <h3>Register</h3>
+            <h3>Sign up</h3>
 
             <form onSubmit={handleSubmit}>
-              <Input
-                placeholder="Name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                required
-              />
+              <label>
+                Username
+                <Input
+                  placeholder="Username"
+                  type="text"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  required
+                />
+              </label>
 
-              <Input
-                placeholder="Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
+              <label>
+                E-mail
+                <Input
+                  placeholder="E-Mail"
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
+              </label>
 
-              <SubmitButton type="submit">Save</SubmitButton>
+              <label>
+                Password
+                <Input
+                  placeholder="Password"
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+              </label>
+
+              <SubmitButton type="submit">Sign up</SubmitButton>
             </form>
+
+            <BottomText>
+              Already have an account? <span>Log in</span>
+            </BottomText>
           </Modal>
         </ModalOverlay>
       )}
