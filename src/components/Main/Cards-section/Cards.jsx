@@ -23,19 +23,6 @@ import heart from "../../../img/heart.png";
 import bin from "../../../img/delete.png";
 
 const CardsSection = () => {
-  const today = new Date();
-
-  const currentTime = today.toLocaleTimeString("en-GB", {
-    hour: "2-digit",
-    minute: "2-digit",
-  });
-
-  const currentDate = today.toLocaleDateString("en-GB");
-
-  const currentWeekDay = today.toLocaleDateString("en-US", {
-    weekday: "long",
-  });
-
   return (
     <Section>
       <CardsContainer>
@@ -46,16 +33,16 @@ const CardsSection = () => {
               <City>Kyiv</City>
             </TopRow>
 
-            <Time>{currentTime}</Time>
+            <Time>14:00</Time>
 
             <WeatherButton>Hourly forecast</WeatherButton>
 
             <DateBlock>
-              <Date>{currentDate}</Date>
+              <Date>21.06.2026</Date>
 
               <DateDivider />
 
-              <WeekDay>{currentWeekDay}</WeekDay>
+              <WeekDay>Sunday</WeekDay>
             </DateBlock>
 
             <WeatherImage src={sun} alt="weather" />
