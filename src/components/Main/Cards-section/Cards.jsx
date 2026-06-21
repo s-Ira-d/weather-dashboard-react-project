@@ -24,7 +24,7 @@ import bin from "../../../img/delete.png";
 
 const CardsSection = () => {
   return (
-    <Section>
+    <Section id="menu">
       <CardsContainer>
         {[1, 2, 3].map((item) => (
           <WeatherCard>

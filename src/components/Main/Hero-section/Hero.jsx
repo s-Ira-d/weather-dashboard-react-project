@@ -43,7 +43,7 @@ const Hero = () => {
   const day = getDayWithSuffix(today.getDate());
 
   return (
-    <HeroSection>
+    <HeroSection id="whoweare">
       <Overlay>
         <Content>
           <Title>Weather dashboard</Title>

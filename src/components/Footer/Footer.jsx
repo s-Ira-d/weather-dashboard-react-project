@@ -17,7 +17,7 @@ import whatsapp from "../../img/whatsapp.png";
 
 const Footer = () => {
   return (
-    <FooterWrapper>
+    <FooterWrapper id="contacts">
       <Container>
         <Logo>
           <img src={logo} alt="logo" />
