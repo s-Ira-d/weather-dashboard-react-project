@@ -1,12 +1,15 @@
 import styled from "styled-components";
-import hero from "../../../img/hero.png";
+import hero from "../../../img/hero.jpg";
 
 export const HeroSection = styled.section`
-  min-height: 500px;
+  position: relative;
+  width: 100%;
   background-image: url(${hero});
-  background-size: 100% 100%;
+  background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  height: 595px;
   font-family: "Montserrat", sans-serif;
 `;
 
