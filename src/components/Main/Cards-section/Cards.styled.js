@@ -70,9 +70,8 @@ export const DateBlock = styled.div`
   margin-bottom: 10px;
 `;
 
-export const Date = styled.p`
+export const CardDate = styled.p`
   margin: 0;
-  font-size: 12px;
   font-family: "Montserrat", sans-serif;
   font-weight: 500;
   font-size: 14px;
@@ -135,4 +134,11 @@ export const DetailsButton = styled.button`
   &:hover {
     opacity: 0.9;
   }
+`;
+
+export const ButtonsWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 10px;
 `;
