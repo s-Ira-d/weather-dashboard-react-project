@@ -3,8 +3,8 @@ import hero from "../../../img/hero.png";
 
 export const HeroSection = styled.section`
   min-height: 500px;
-  // background-image: url(${hero});
-  background-size: cover;
+  background-image: url(${hero});
+  background-size: 100% 100%;
   background-position: center;
   background-repeat: no-repeat;
   font-family: "Montserrat", sans-serif;

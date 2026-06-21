@@ -15,7 +15,6 @@ import {
   SubmitButton,
   BottomText,
 } from "./Header.styled";
-
 import logo from "../../img/logo.png";
 import userImg from "../../img/user.png";
 
@@ -63,7 +62,7 @@ const Header = () => {
         </Logo>
 
         <Navigation>
-          <NavLink href="#home">Home</NavLink>
+          <NavLink href="#whoweare">Who we are</NavLink>
           <NavLink href="#contacts">Contacts</NavLink>
           <NavLink href="#menu">Menu</NavLink>
         </Navigation>
