@@ -26,7 +26,13 @@ import refresh from "../../../img/refresh.png";
 import heart from "../../../img/heart.png";
 import bin from "../../../img/delete.png";
 
-const CardsSection = ({ cards, setCards }) => {
+const CardsSection = ({
+  cards,
+  setCards,
+  setSelectedCity,
+  setHourlyCity,
+  setWeeklyCity,
+}) => {
   const [currentTime, setCurrentTime] = useState(
     new Date().toLocaleTimeString("en-GB", {
       hour: "2-digit",
@@ -63,6 +69,26 @@ const CardsSection = ({ cards, setCards }) => {
     );
   };
 
+  const openHourlyForecast = (city) => {
+    setHourlyCity(city);
+
+    setTimeout(() => {
+      document
+        .getElementById("hourly-forecast")
+        ?.scrollIntoView({ behavior: "smooth" });
+    }, 100);
+  };
+
+  const openWeeklyForecast = (city) => {
+    setWeeklyCity(city);
+
+    setTimeout(() => {
+      document
+        .getElementById("weekly-forecast")
+        ?.scrollIntoView({ behavior: "smooth" });
+    }, 100);
+  };
+
   return (
     <Section id="menu">
       <CardsContainer>
@@ -76,8 +102,12 @@ const CardsSection = ({ cards, setCards }) => {
             <Time>{currentTime}</Time>
 
             <ButtonsWrapper>
-              <WeatherButton>Hourly forecast</WeatherButton>
-              <WeatherButton>Weekly forecast</WeatherButton>
+              <WeatherButton onClick={() => openHourlyForecast(item.city)}>
+                Hourly forecast
+              </WeatherButton>
+              <WeatherButton onClick={() => openWeeklyForecast(item.city)}>
+                Weekly forecast
+              </WeatherButton>
             </ButtonsWrapper>
 
             <DateBlock>
@@ -99,7 +129,19 @@ const CardsSection = ({ cards, setCards }) => {
                 onClick={() => addToFavorites(item.city)}
               />
 
-              <DetailsButton>See more</DetailsButton>
+              <DetailsButton
+                onClick={() => {
+                  setSelectedCity(item);
+
+                  setTimeout(() => {
+                    document
+                      .getElementById("weather-details")
+                      ?.scrollIntoView({ behavior: "smooth" });
+                  }, 100);
+                }}
+              >
+                See more
+              </DetailsButton>
 
               <BottomIcon
                 src={bin}
