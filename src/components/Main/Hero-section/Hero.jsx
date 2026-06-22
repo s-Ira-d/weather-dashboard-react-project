@@ -12,8 +12,10 @@ import {
   SearchButton,
 } from "./Hero.styled";
 import search from "../../../img/search.png";
+import { useState } from "react";
 
-const Hero = () => {
+const Hero = ({ onAddCity }) => {
+  const [city, setCity] = useState("");
   const today = new Date();
 
   const getDayWithSuffix = (day) => {
@@ -68,8 +70,9 @@ const Hero = () => {
               type="text"
               placeholder="Search location..."
               list="ukrainian-cities"
+              value={city}
+              onChange={(e) => setCity(e.target.value)}
             />
-
             <datalist id="ukrainian-cities">
               <option value="Kyiv" />
               <option value="Lviv" />
@@ -93,7 +96,14 @@ const Hero = () => {
               <option value="Kremenchuk" />
               <option value="Kropyvnytskyi" />
             </datalist>
-            <SearchButton>
+            <SearchButton
+              onClick={() => {
+                if (!city.trim()) return;
+
+                onAddCity(city);
+                setCity("");
+              }}
+            >
               <img src={search} alt="search" />
             </SearchButton>
           </SearchWrapper>

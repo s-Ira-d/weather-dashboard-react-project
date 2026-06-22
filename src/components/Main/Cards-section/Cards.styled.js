@@ -8,9 +8,10 @@ export const Section = styled.section`
 export const CardsContainer = styled.div`
   max-width: 1200px;
   margin: 0 auto;
-  display: flex;
-  justify-content: center;
-  gap: 100px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 60px;
+  justify-items: center;
 `;
 
 export const WeatherCard = styled.div`

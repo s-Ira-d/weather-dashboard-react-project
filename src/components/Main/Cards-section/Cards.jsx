@@ -26,28 +26,7 @@ import refresh from "../../../img/refresh.png";
 import heart from "../../../img/heart.png";
 import bin from "../../../img/delete.png";
 
-const CardsSection = () => {
-  const [cards, setCards] = useState([
-    {
-      id: 1,
-      country: "Ukraine",
-      city: "Kyiv",
-      temp: "22°C",
-    },
-    {
-      id: 2,
-      country: "France",
-      city: "Paris",
-      temp: "18°C",
-    },
-    {
-      id: 3,
-      country: "Germany",
-      city: "Berlin",
-      temp: "20°C",
-    },
-  ]);
-
+const CardsSection = ({ cards, setCards }) => {
   const [currentTime, setCurrentTime] = useState(
     new Date().toLocaleTimeString("en-GB", {
       hour: "2-digit",
