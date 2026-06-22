@@ -95,6 +95,7 @@ export const SearchInput = styled.input`
   padding: 0 18px;
   font-family: "Montserrat", sans-serif;
   font-size: 14px;
+  background-color: #d9d9d9;
 `;
 
 export const SearchButton = styled.button`
@@ -112,4 +113,10 @@ export const SearchButton = styled.button`
     height: 20px;
     object-fit: contain;
   }
+`;
+
+export const Suffix = styled.sup`
+  font-size: 10px;
+  position: relative;
+  top: -1px;
 `;

@@ -52,9 +52,6 @@ export const LoadMoreButton = styled.button`
   font-weight: 500;
   font-size: 16px;
   transition: 0.2s;
-  &:hover {
-    transform: translateY(-2px);
-  }
 `;
 
 export const TitleSection = styled.h2`

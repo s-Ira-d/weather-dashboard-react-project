@@ -10,6 +10,7 @@ import {
   SearchWrapper,
   SearchInput,
   SearchButton,
+  Suffix,
 } from "./Hero.styled";
 import search from "../../../img/search.png";
 import { useState } from "react";
@@ -19,18 +20,30 @@ const Hero = ({ onAddCity }) => {
   const today = new Date();
 
   const getDayWithSuffix = (day) => {
-    if (day > 3 && day < 21) return `${day}th`;
+    let suffix = "th";
 
-    switch (day % 10) {
-      case 1:
-        return `${day}st`;
-      case 2:
-        return `${day}nd`;
-      case 3:
-        return `${day}rd`;
-      default:
-        return `${day}th`;
+    if (!(day > 3 && day < 21)) {
+      switch (day % 10) {
+        case 1:
+          suffix = "st";
+          break;
+        case 2:
+          suffix = "nd";
+          break;
+        case 3:
+          suffix = "rd";
+          break;
+        default:
+          suffix = "th";
+      }
     }
+
+    return (
+      <>
+        {day}
+        <Suffix>{suffix}</Suffix>
+      </>
+    );
   };
 
   const monthYear = today.toLocaleDateString("en-US", {
@@ -73,6 +86,7 @@ const Hero = ({ onAddCity }) => {
               value={city}
               onChange={(e) => setCity(e.target.value)}
             />
+
             <datalist id="ukrainian-cities">
               <option value="Kyiv" />
               <option value="Lviv" />
@@ -96,6 +110,7 @@ const Hero = ({ onAddCity }) => {
               <option value="Kremenchuk" />
               <option value="Kropyvnytskyi" />
             </datalist>
+
             <SearchButton
               onClick={() => {
                 if (!city.trim()) return;

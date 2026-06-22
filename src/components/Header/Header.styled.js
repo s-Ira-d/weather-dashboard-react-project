@@ -143,9 +143,6 @@ export const SubmitButton = styled.button`
   font-weight: 400;
   cursor: pointer;
   transition: 0.2s;
-  &:hover {
-    transform: translateY(-1px);
-  }
 `;
 
 export const BottomText = styled.p`
