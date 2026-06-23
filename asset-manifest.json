@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/weather-dashboard-react-project/static/css/main.e6c13ad2.css",
+    "main.js": "/weather-dashboard-react-project/static/js/main.34633407.js",
+    "static/media/hero.jpg": "/weather-dashboard-react-project/static/media/hero.52a8cf915436c15a03cf.jpg",
+    "static/media/im3.png": "/weather-dashboard-react-project/static/media/im3.74495217e5344a17cf0e.png",
+    "static/media/whatsapp.png": "/weather-dashboard-react-project/static/media/whatsapp.e05aebd3d8002d039f7b.png",
+    "static/media/inst.png": "/weather-dashboard-react-project/static/media/inst.d6fc24a1e75c6145b7b7.png",
+    "static/media/heart.png": "/weather-dashboard-react-project/static/media/heart.32397ef127ffe8894991.png",
+    "static/media/im5.png": "/weather-dashboard-react-project/static/media/im5.40899b52732473b04d70.png",
+    "static/media/im1.png": "/weather-dashboard-react-project/static/media/im1.bb9604c5bd420edc85ff.png",
+    "static/media/im2.png": "/weather-dashboard-react-project/static/media/im2.fecb115b52f546289468.png",
+    "static/media/im4.png": "/weather-dashboard-react-project/static/media/im4.477a9f4ce44f3b4fe0f0.png",
+    "static/media/user.png": "/weather-dashboard-react-project/static/media/user.a6143582309785dca610.png",
+    "static/media/facebook.png": "/weather-dashboard-react-project/static/media/facebook.a63965951b2ae362bd24.png",
+    "static/media/search.png": "/weather-dashboard-react-project/static/media/search.ec85d3d80b6659dc3f5b.png",
+    "static/media/refresh.png": "/weather-dashboard-react-project/static/media/refresh.8304a958dcdf2d47801f.png",
+    "index.html": "/weather-dashboard-react-project/index.html",
+    "main.e6c13ad2.css.map": "/weather-dashboard-react-project/static/css/main.e6c13ad2.css.map",
+    "main.34633407.js.map": "/weather-dashboard-react-project/static/js/main.34633407.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.34633407.js"
+  ]
+}
