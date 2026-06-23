@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Section = styled.section`
-  padding: 80px 0;
+  padding: 90px 0;
   background: white;
 `;
 
@@ -9,24 +9,27 @@ export const BackgroundBox = styled.div`
   max-width: 1000px;
   margin: 0 auto;
   background: #e8e8e8;
-  border-radius: 15px;
-  padding: 18px 30px 24px;
+  border-radius: 18px;
+  padding: 28px 40px;
 `;
 
 export const Title = styled.h2`
   font-family: "Montserrat", sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 600;
-  margin: 0 0 10px;
+  margin: 0 0 18px;
 `;
 
-export const ChartWrapper = styled.div`
+export const TimesRow = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+  padding: 0 12px;
 `;
 
-export const Chart = styled.img`
-  width: 95%;
-  height: auto;
-  display: block;
+export const TimeLabel = styled.span`
+  font-family: "Montserrat", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: #333;
 `;

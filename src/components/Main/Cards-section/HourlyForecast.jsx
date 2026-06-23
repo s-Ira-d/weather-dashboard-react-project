@@ -1,5 +1,20 @@
 import { useEffect, useState } from "react";
-import { Section, BackgroundBox, Title } from "./HourlyForecast.styled";
+import {
+  Section,
+  BackgroundBox,
+  Title,
+  TimesRow,
+  TimeLabel,
+} from "./HourlyForecast.styled";
+
+import {
+  LineChart,
+  Line,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  ResponsiveContainer,
+} from "recharts";
 
 const API_KEY = "f68981f183c27f389004dfc15b729fd9";
 
@@ -16,7 +31,19 @@ const HourlyForecast = ({ city }) => {
 
       const data = await response.json();
 
-      setForecast(data.list.slice(0, 8));
+      const chartData = data.list.slice(0, 8).map((item) => {
+        const date = new Date(item.dt * 1000);
+
+        return {
+          time: date.toLocaleTimeString("en-US", {
+            hour: "numeric",
+            hour12: true,
+          }),
+          temp: Math.round(item.main.temp),
+        };
+      });
+
+      setForecast(chartData);
     };
 
     loadForecast();
@@ -28,12 +55,32 @@ const HourlyForecast = ({ city }) => {
     <Section id="hourly-forecast">
       <BackgroundBox>
         <Title>{city.city} hourly forecast</Title>
+        <TimesRow>
+          {forecast.map((item, i) => (
+            <TimeLabel key={i}>{item.time}</TimeLabel>
+          ))}
+        </TimesRow>
 
-        {forecast.map((item) => (
-          <p key={item.dt}>
-            {item.dt_txt.slice(11, 16)} — {Math.round(item.main.temp)}°C
-          </p>
-        ))}
+        <ResponsiveContainer width="100%" height={380}>
+          <LineChart data={forecast}>
+            <CartesianGrid strokeDasharray="3 3" stroke="#d0d0d0" />
+            <YAxis
+              stroke="transparent"
+              tick={{ fill: "#666", fontSize: 12 }}
+              domain={["dataMin - 2", "dataMax + 2"]}
+            />
+
+            <Tooltip />
+
+            <Line
+              type="monotone"
+              dataKey="temp"
+              stroke="#FFB36C"
+              strokeWidth={2}
+              dot={false}
+            />
+          </LineChart>
+        </ResponsiveContainer>
       </BackgroundBox>
     </Section>
   );

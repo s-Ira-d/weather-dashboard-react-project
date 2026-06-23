@@ -12,11 +12,13 @@ import {
   SearchButton,
   Suffix,
 } from "./Hero.styled";
+
 import search from "../../../img/search.png";
 import { useState } from "react";
 
-const Hero = ({ onAddCity }) => {
+const Hero = ({ onAddCity, searchedCities }) => {
   const [city, setCity] = useState("");
+
   const today = new Date();
 
   const getDayWithSuffix = (day) => {
@@ -57,6 +59,13 @@ const Hero = ({ onAddCity }) => {
 
   const day = getDayWithSuffix(today.getDate());
 
+  const handleSearch = () => {
+    if (!city.trim()) return;
+
+    onAddCity(city.trim());
+    setCity("");
+  };
+
   return (
     <HeroSection id="whoweare">
       <Overlay>
@@ -82,43 +91,23 @@ const Hero = ({ onAddCity }) => {
             <SearchInput
               type="text"
               placeholder="Search location..."
-              list="ukrainian-cities"
+              list="searched-cities"
               value={city}
               onChange={(e) => setCity(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  handleSearch();
+                }
+              }}
             />
 
-            <datalist id="ukrainian-cities">
-              <option value="Kyiv" />
-              <option value="Lviv" />
-              <option value="Odesa" />
-              <option value="Kharkiv" />
-              <option value="Dnipro" />
-              <option value="Zaporizhzhia" />
-              <option value="Vinnytsia" />
-              <option value="Poltava" />
-              <option value="Chernihiv" />
-              <option value="Cherkasy" />
-              <option value="Zhytomyr" />
-              <option value="Sumy" />
-              <option value="Rivne" />
-              <option value="Ternopil" />
-              <option value="Ivano-Frankivsk" />
-              <option value="Lutsk" />
-              <option value="Uzhhorod" />
-              <option value="Mykolaiv" />
-              <option value="Kherson" />
-              <option value="Kremenchuk" />
-              <option value="Kropyvnytskyi" />
+            <datalist id="searched-cities">
+              {searchedCities.map((cityName) => (
+                <option key={cityName} value={cityName} />
+              ))}
             </datalist>
 
-            <SearchButton
-              onClick={() => {
-                if (!city.trim()) return;
-
-                onAddCity(city);
-                setCity("");
-              }}
-            >
+            <SearchButton onClick={handleSearch}>
               <img src={search} alt="search" />
             </SearchButton>
           </SearchWrapper>

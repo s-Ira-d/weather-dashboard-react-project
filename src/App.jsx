@@ -19,6 +19,15 @@ function App() {
   const [hourlyCity, setHourlyCity] = useState(null);
   const [cards, setCards] = useState([]);
 
+  const [searchedCities, setSearchedCities] = useState(() => {
+    const saved = localStorage.getItem("searchedCities");
+    return saved ? JSON.parse(saved) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem("searchedCities", JSON.stringify(searchedCities));
+  }, [searchedCities]);
+
   const getWeather = async (city) => {
     const response = await fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`,
@@ -70,6 +79,18 @@ function App() {
       const berlin = await getWeather("Berlin");
 
       setCards([kyiv, paris, berlin]);
+
+      setSearchedCities((prev) => {
+        const cities = [...prev];
+
+        [kyiv.city, paris.city, berlin.city].forEach((city) => {
+          if (!cities.includes(city)) {
+            cities.push(city);
+          }
+        });
+
+        return cities;
+      });
     } catch (error) {
       console.log(error);
     }
@@ -84,6 +105,14 @@ function App() {
       const weather = await getWeather(city);
 
       setCards((prev) => [...prev, weather]);
+
+      setSearchedCities((prev) => {
+        if (prev.includes(weather.city)) {
+          return prev;
+        }
+
+        return [...prev, weather.city];
+      });
     } catch {
       alert("City not found");
     }
@@ -94,7 +123,7 @@ function App() {
       <Header />
 
       <main style={{ flex: 1 }}>
-        <Hero onAddCity={addCityCard} />
+        <Hero onAddCity={addCityCard} searchedCities={searchedCities} />
 
         <Cards
           cards={cards}

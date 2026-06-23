@@ -43,7 +43,7 @@ const WeatherDetails = ({ city }) => {
 
           <Cell>
             <CellTitle>Pressure</CellTitle>
-            <CellValue>{city.pressure} hPa</CellValue>
+            <CellValue>{city.pressure} Pa</CellValue>
             <CellImage src={im3} alt="" />
           </Cell>
 
@@ -55,7 +55,15 @@ const WeatherDetails = ({ city }) => {
 
           <Cell>
             <CellTitle>Visibility</CellTitle>
-            <CellValue>{city.visibility} km</CellValue>
+            <CellValue>
+              {city.visibility >= 10
+                ? "Excellent"
+                : city.visibility >= 5
+                  ? "Good"
+                  : city.visibility >= 2
+                    ? "Moderate"
+                    : "Poor"}
+            </CellValue>
             <CellImage src={im5} alt="" />
           </Cell>
         </Grid>
