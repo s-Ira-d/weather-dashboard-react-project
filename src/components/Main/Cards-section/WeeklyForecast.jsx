@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+
 import {
   Section,
   BackgroundBox,
@@ -8,100 +10,108 @@ import {
   CenterBlock,
   RightBlock,
   DayName,
-  DayDate,
   WeatherIcon,
   Temp,
   Description,
 } from "./WeeklyForecast.styled";
-import img1 from "../../../img/img1.png";
-import img2 from "../../../img/img2.png";
-import img3 from "../../../img/img3.png";
-import img4 from "../../../img/img4.png";
-import img5 from "../../../img/img5.png";
+
+const API_KEY = "f68981f183c27f389004dfc15b729fd9";
 
 const WeeklyForecast = ({ city }) => {
-  if (!city) return null;
+  const [forecast, setForecast] = useState([]);
 
-  const weekData = [
-    {
-      day: "Mon",
-      date: "Jun 21",
-      img: img1,
-      temp: "24°C / 18°C",
-      description: "Sunny weather",
-    },
-    {
-      day: "Tue",
-      date: "Jun 22",
-      img: img2,
-      temp: "25°C / 19°C",
-      description: "Partly cloudy",
-    },
-    {
-      day: "Wed",
-      date: "Jun 23",
-      img: img3,
-      temp: "22°C / 17°C",
-      description: "Light rain",
-    },
-    {
-      day: "Thu",
-      date: "Jun 24",
-      img: img4,
-      temp: "21°C / 16°C",
-      description: "Windy day",
-    },
-    {
-      day: "Fri",
-      date: "Jun 25",
-      img: img5,
-      temp: "23°C / 18°C",
-      description: "Sunny weather",
-    },
-    {
-      day: "Sat",
-      date: "Jun 26",
-      img: img4,
-      temp: "26°C / 20°C",
-      description: "Clear sky",
-    },
-    {
-      day: "Sun",
-      date: "Jun 27",
-      img: img3,
-      temp: "24°C / 18°C",
-      description: "Partly cloudy",
-    },
-    {
-      day: "Mon",
-      date: "Jun 28",
-      img: img2,
-      temp: "22°C / 17°C",
-      description: "Light rain",
-    },
-  ];
+  useEffect(() => {
+    if (!city) return;
+
+    const loadForecast = async () => {
+      try {
+        const response = await fetch(
+          `https://api.openweathermap.org/data/2.5/forecast?q=${city.city}&appid=${API_KEY}&units=metric`,
+        );
+
+        const data = await response.json();
+
+        const groupedDays = {};
+
+        data.list.forEach((item) => {
+          const date = item.dt_txt.split(" ")[0];
+
+          if (!groupedDays[date]) {
+            groupedDays[date] = [];
+          }
+
+          groupedDays[date].push(item);
+        });
+
+        const result = Object.entries(groupedDays)
+          .slice(0, 5)
+          .map(([date, items]) => {
+            const temps = items.map((i) => i.main.temp);
+
+            const minTemp = Math.round(Math.min(...temps));
+            const maxTemp = Math.round(Math.max(...temps));
+
+            const middleItem = items[Math.floor(items.length / 2)];
+
+            return {
+              date,
+
+              day: new Date(date).toLocaleDateString("en-US", {
+                weekday: "short",
+              }),
+
+              formattedDate: new Date(date).toLocaleDateString("en-US", {
+                month: "short",
+                day: "numeric",
+              }),
+
+              minTemp,
+              maxTemp,
+
+              description: middleItem.weather[0].description,
+
+              icon: middleItem.weather[0].icon,
+            };
+          });
+
+        setForecast(result);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    loadForecast();
+  }, [city]);
+
+  if (!city) return null;
 
   return (
     <Section id="weekly-forecast">
       <BackgroundBox>
-        <Title>8-day {city} forecast</Title>
+        <Title>5-day {city.city} forecast</Title>
 
         <DaysGrid>
-          {weekData.map((item, index) => (
-            <DayCard key={index}>
+          {forecast.map((day) => (
+            <DayCard key={day.date}>
               <LeftBlock>
                 <DayName>
-                  {item.day}, {item.date}
+                  {day.day}, {day.formattedDate}
                 </DayName>
               </LeftBlock>
 
               <CenterBlock>
-                <WeatherIcon src={item.img} alt="weather" />
-                <Temp>{item.temp}</Temp>
+                <WeatherIcon
+                  src={`https://openweathermap.org/img/wn/${day.icon}@2x.png`}
+                  alt={day.description}
+                />
+
+                <Temp>
+                  {day.maxTemp}°C / {day.minTemp}°C
+                </Temp>
               </CenterBlock>
 
               <RightBlock>
-                <Description>{item.description}</Description>
+                <Description>{day.description}</Description>
               </RightBlock>
             </DayCard>
           ))}

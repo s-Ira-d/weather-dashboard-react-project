@@ -1,5 +1,4 @@
 import { useState } from "react";
-
 import {
   Section,
   CardsContainer,
@@ -20,8 +19,6 @@ import {
   DetailsButton,
   ButtonsWrapper,
 } from "./Cards.styled.js";
-
-import sun from "../../../img/sun.png";
 import refresh from "../../../img/refresh.png";
 import heart from "../../../img/heart.png";
 import bin from "../../../img/delete.png";
@@ -102,10 +99,10 @@ const CardsSection = ({
             <Time>{currentTime}</Time>
 
             <ButtonsWrapper>
-              <WeatherButton onClick={() => openHourlyForecast(item.city)}>
+              <WeatherButton onClick={() => openHourlyForecast(item)}>
                 Hourly forecast
               </WeatherButton>
-              <WeatherButton onClick={() => openWeeklyForecast(item.city)}>
+              <WeatherButton onClick={() => openWeeklyForecast(item)}>
                 Weekly forecast
               </WeatherButton>
             </ButtonsWrapper>
@@ -116,7 +113,10 @@ const CardsSection = ({
               <WeekDay>{currentDay}</WeekDay>
             </DateBlock>
 
-            <WeatherImage src={sun} alt="weather" />
+            <WeatherImage
+              src={`https://openweathermap.org/img/wn/${item.icon}@2x.png`}
+              alt={item.description}
+            />
 
             <Temperature>{item.temp}</Temperature>
 

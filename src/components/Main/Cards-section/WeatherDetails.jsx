@@ -23,39 +23,40 @@ const WeatherDetails = ({ city }) => {
         <Grid>
           <Cell>
             <CellTitle>Feels like</CellTitle>
-            <CellValue>21°C</CellValue>
-            <CellImage src={im1} alt="im1" />
+            <CellValue>{city.feelsLike}°C</CellValue>
+            <CellImage src={im1} alt="" />
           </Cell>
 
           <Cell>
             <CellTitle>Min ℃</CellTitle>
-            <CellValue>18°C</CellValue>
+            <CellValue>{city.minTemp}°C</CellValue>
+
             <CellTitle>Max ℃</CellTitle>
-            <CellValue>24°C</CellValue>
+            <CellValue>{city.maxTemp}°C</CellValue>
           </Cell>
 
           <Cell>
             <CellTitle>Humidity</CellTitle>
-            <CellValue>65%</CellValue>
-            <CellImage src={im2} alt="im2" />
+            <CellValue>{city.humidity}%</CellValue>
+            <CellImage src={im2} alt="" />
           </Cell>
 
           <Cell>
             <CellTitle>Pressure</CellTitle>
-            <CellValue>1013 hPa</CellValue>
-            <CellImage src={im3} alt="im3" />
+            <CellValue>{city.pressure} hPa</CellValue>
+            <CellImage src={im3} alt="" />
           </Cell>
 
           <Cell>
             <CellTitle>Wind speed</CellTitle>
-            <CellValue>5 m/s</CellValue>
-            <CellImage src={im4} alt="im4" />
+            <CellValue>{city.wind} m/s</CellValue>
+            <CellImage src={im4} alt="" />
           </Cell>
 
           <Cell>
             <CellTitle>Visibility</CellTitle>
-            <CellValue>10 km</CellValue>
-            <CellImage src={im5} alt="im5" />
+            <CellValue>{city.visibility} km</CellValue>
+            <CellImage src={im5} alt="" />
           </Cell>
         </Grid>
       </BackgroundBox>
