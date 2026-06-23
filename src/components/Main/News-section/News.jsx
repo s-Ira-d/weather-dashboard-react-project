@@ -23,7 +23,10 @@ const NewsSection = () => {
           `https://newsapi.org/v2/everything?q=weather&language=en&pageSize=4&page=${page}&apiKey=${API_KEY}`,
         );
 
+        console.log("Status:", res.status);
+
         const data = await res.json();
+        console.log("Response:", data);
 
         if (!data.articles) return;
 
