@@ -5,6 +5,8 @@ export const HeaderWrapper = styled.header`
   border-bottom: 1px solid #e5e5e5;
   background-color: #fff;
   font-family: "Montserrat Alternates", sans-serif;
+  position: relative;
+  z-index: 10000;
 `;
 
 export const Container = styled.div`
@@ -220,6 +222,9 @@ export const BottomText = styled.p`
   span {
     text-decoration: underline;
     cursor: pointer;
+    font-size: 10px;
+    font-weight: 500;
+    font-family: "Montserrat Alternates", sans-serif;
   }
 `;
 
@@ -227,12 +232,21 @@ export const BurgerButton = styled.button`
   display: none;
 
   @media (max-width: 767px) {
-    display: block;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
     margin-left: auto;
+
     border: none;
     background: transparent;
-    font-size: 30px;
+
+    font-size: 16px;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+
     cursor: pointer;
+    color: #333;
   }
 `;
 
@@ -240,17 +254,30 @@ export const MobileMenu = styled.div`
   display: none;
 
   @media (max-width: 767px) {
-    position: absolute;
-    top: 100%;
+    position: fixed;
+    top: 60px;
     left: 0;
     width: 100%;
-    background: white;
-    border-top: 1px solid #e5e5e5;
-    padding: 20px;
+    height: calc(100vh - 60px);
+
+    background: #e6e6e6;
+    border-top: 1px solid #e6e6e6;
+
+    padding: 24px;
     display: flex;
     flex-direction: column;
     gap: 20px;
-    z-index: 1000;
-    box-sizing: border-box;
+
+    z-index: 9999;
+    overflow-y: auto;
   }
+`;
+
+export const Arrow = styled.span`
+  display: inline-block;
+  transition: transform 0.3s ease;
+
+  transform: ${({ $open }) => ($open ? "rotate(-90deg)" : "rotate(90deg)")};
+
+  font-size: 28px;
 `;

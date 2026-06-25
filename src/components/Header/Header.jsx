@@ -16,6 +16,7 @@ import {
   BottomText,
   BurgerButton,
   MobileMenu,
+  Arrow,
 } from "./Header.styled";
 import logo from "../../img/logo.png";
 import userImg from "../../img/user.png";
@@ -83,7 +84,10 @@ const Header = () => {
           )}
         </Actions>
 
-        <BurgerButton onClick={() => setMenuOpen(!menuOpen)}>☰</BurgerButton>
+        <BurgerButton onClick={() => setMenuOpen(!menuOpen)}>
+          <span>Menu</span>
+          <Arrow $open={menuOpen}>›</Arrow>
+        </BurgerButton>
       </Container>
 
       {menuOpen && (
