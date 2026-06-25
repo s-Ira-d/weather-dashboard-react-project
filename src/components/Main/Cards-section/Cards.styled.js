@@ -3,6 +3,14 @@ import styled from "styled-components";
 export const Section = styled.section`
   padding: 80px 0;
   background: white;
+
+  @media (max-width: 1199px) {
+    padding: 60px 0;
+  }
+
+  @media (max-width: 767px) {
+    padding: 40px 0;
+  }
 `;
 
 export const CardsContainer = styled.div`
@@ -12,6 +20,16 @@ export const CardsContainer = styled.div`
   grid-template-columns: repeat(3, 1fr);
   gap: 60px;
   justify-items: center;
+
+  @media (max-width: 1199px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+  }
+
+  @media (max-width: 767px) {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
 `;
 
 export const WeatherCard = styled.div`
