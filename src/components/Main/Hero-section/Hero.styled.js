@@ -11,6 +11,14 @@ export const HeroSection = styled.section`
   justify-content: center;
   height: 595px;
   font-family: "Montserrat", sans-serif;
+
+  @media (max-width: 1199px) {
+    height: 500px;
+  }
+
+  @media (max-width: 767px) {
+    height: 450px;
+  }
 `;
 
 export const Overlay = styled.div`
@@ -20,6 +28,14 @@ export const Overlay = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media (max-width: 1199px) {
+    min-height: 500px;
+  }
+
+  @media (max-width: 767px) {
+    min-height: 450px;
+  }
 `;
 
 export const Content = styled.div`
@@ -27,6 +43,14 @@ export const Content = styled.div`
   text-align: center;
   color: white;
   transform: translateY(-10px);
+
+  @media (max-width: 1199px) {
+    max-width: 700px;
+  }
+
+  @media (max-width: 767px) {
+    max-width: 90%;
+  }
 `;
 
 export const Title = styled.h1`
@@ -34,6 +58,16 @@ export const Title = styled.h1`
   font-weight: 700;
   line-height: 1.2;
   margin-bottom: 60px;
+
+  @media (max-width: 1199px) {
+    font-size: 40px;
+    margin-bottom: 50px;
+  }
+
+  @media (max-width: 767px) {
+    font-size: 30px;
+    margin-bottom: 35px;
+  }
 `;
 
 export const DescriptionBlock = styled.div`
@@ -42,6 +76,18 @@ export const DescriptionBlock = styled.div`
   align-items: flex-start;
   gap: 16px;
   margin-bottom: 100px;
+
+  @media (max-width: 1199px) {
+    gap: 12px;
+    margin-bottom: 70px;
+  }
+
+  @media (max-width: 767px) {
+    display: grid;
+    grid-template-columns: 3px 1fr;
+    column-gap: 16px;
+    justify-content: center;
+  }
 `;
 
 export const LeftDescription = styled.p`
@@ -49,11 +95,27 @@ export const LeftDescription = styled.p`
   font-size: 18px;
   font-weight: 500;
   line-height: 1.6;
-  white-space: pre-line;
   margin: 0;
   position: relative;
   left: -30px;
   text-align: right;
+
+  @media (max-width: 1199px) {
+    width: 210px;
+    left: -15px;
+    font-size: 15px;
+    line-height: 1.4;
+  }
+
+  @media (max-width: 767px) {
+    grid-column: 2;
+    grid-row: 1;
+
+    width: 180px;
+    left: 0;
+    text-align: left;
+    font-size: 12px;
+  }
 `;
 
 export const RightDescription = styled.p`
@@ -61,18 +123,42 @@ export const RightDescription = styled.p`
   font-size: 18px;
   font-weight: 500;
   line-height: 1.6;
-  white-space: pre-line;
   margin: 0;
   position: relative;
   left: 30px;
   text-align: left;
+
+  @media (max-width: 1199px) {
+    width: 210px;
+    left: 15px;
+    font-size: 15px;
+  }
+
+  @media (max-width: 767px) {
+    grid-column: 2;
+    grid-row: 2;
+
+    width: 180px;
+    left: 0;
+    text-align: left;
+    font-size: 12px;
+  }
 `;
 
 export const Divider = styled.div`
-  width: 1px;
-  height: 150px;
   width: 3px;
+  height: 150px;
   background-color: white;
+
+  @media (max-width: 1199px) {
+    height: 120px;
+  }
+
+  @media (max-width: 767px) {
+    grid-column: 1;
+    grid-row: 1 / 3;
+    height: 140px;
+  }
 `;
 
 export const SearchWrapper = styled.div`
@@ -85,6 +171,16 @@ export const SearchWrapper = styled.div`
   border: 2px solid black;
   border-radius: 14px;
   overflow: hidden;
+
+  @media (max-width: 1199px) {
+    width: 450px;
+  }
+
+  @media (max-width: 767px) {
+    width: 100%;
+    max-width: 320px;
+    height: 38px;
+  }
 `;
 
 export const SearchInput = styled.input`
@@ -96,6 +192,11 @@ export const SearchInput = styled.input`
   font-family: "Montserrat", sans-serif;
   font-size: 14px;
   background-color: #d9d9d9;
+
+  @media (max-width: 767px) {
+    font-size: 12px;
+    padding: 0 12px;
+  }
 `;
 
 export const SearchButton = styled.button`
@@ -108,10 +209,19 @@ export const SearchButton = styled.button`
   align-items: center;
   justify-content: center;
   cursor: pointer;
+
   img {
     width: 20px;
     height: 20px;
-    object-fit: contain;
+  }
+
+  @media (max-width: 767px) {
+    width: 42px;
+
+    img {
+      width: 16px;
+      height: 16px;
+    }
   }
 `;
 
