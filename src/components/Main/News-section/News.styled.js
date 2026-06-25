@@ -3,6 +3,10 @@ import styled from "styled-components";
 export const Section = styled.section`
   padding: 80px 0;
   background: white;
+
+  @media (max-width: 1199px) {
+    display: none;
+  }
 `;
 
 export const Container = styled.div`

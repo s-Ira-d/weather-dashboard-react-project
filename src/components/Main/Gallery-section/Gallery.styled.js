@@ -3,6 +3,10 @@ import styled from "styled-components";
 export const Section = styled.section`
   padding: 80px 0;
   background: white;
+
+  @media (max-width: 1199px) {
+    display: none;
+  }
 `;
 
 export const Title = styled.h2`
@@ -17,7 +21,6 @@ export const Slider = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 0;
 `;
 
 export const Image = styled.img`
