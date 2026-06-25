@@ -60,8 +60,10 @@ const HourlyForecast = ({ city }) => {
             <TimeLabel key={i}>{item.time}</TimeLabel>
           ))}
         </TimesRow>
-
-        <ResponsiveContainer width="100%" height={380}>
+        <ResponsiveContainer
+          width="100%"
+          height={window.innerWidth < 768 ? 220 : 380}
+        >
           <LineChart data={forecast}>
             <CartesianGrid strokeDasharray="3 3" stroke="#d0d0d0" />
             <YAxis
