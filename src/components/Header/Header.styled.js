@@ -13,6 +13,15 @@ export const Container = styled.div`
   padding: 8px 24px;
   display: flex;
   align-items: center;
+  position: relative;
+
+  @media (max-width: 1199px) {
+    padding: 8px 16px;
+  }
+
+  @media (max-width: 767px) {
+    padding: 8px 12px;
+  }
 `;
 
 export const Logo = styled.a`
@@ -20,11 +29,20 @@ export const Logo = styled.a`
   align-items: center;
   text-decoration: none;
   cursor: pointer;
+
   img {
     display: block;
     width: 120px;
     height: auto;
     object-fit: contain;
+
+    @media (max-width: 1199px) {
+      width: 100px;
+    }
+
+    @media (max-width: 767px) {
+      width: 90px;
+    }
   }
 `;
 
@@ -33,6 +51,15 @@ export const Navigation = styled.nav`
   align-items: center;
   gap: 32px;
   margin-left: 60px;
+
+  @media (max-width: 1199px) {
+    gap: 20px;
+    margin-left: 30px;
+  }
+
+  @media (max-width: 767px) {
+    display: none;
+  }
 `;
 
 export const NavLink = styled.a`
@@ -41,8 +68,17 @@ export const NavLink = styled.a`
   font-size: 12px;
   transition: color 0.3s ease;
   font-weight: 500;
+
   &:hover {
     color: #ffb36c;
+  }
+
+  @media (max-width: 1199px) {
+    font-size: 11px;
+  }
+
+  @media (max-width: 767px) {
+    font-size: 16px;
   }
 `;
 
@@ -51,8 +87,15 @@ export const Actions = styled.div`
   display: flex;
   align-items: center;
   gap: 12px;
-`;
 
+  @media (max-width: 1199px) {
+    gap: 8px;
+  }
+
+  @media (max-width: 767px) {
+    display: none;
+  }
+`;
 export const RegisterButton = styled.button`
   padding: 8px 16px;
   border: none;
@@ -90,33 +133,54 @@ export const Modal = styled.div`
   padding: 30px;
   background: white;
   border-radius: 50px;
+
+  @media (max-width: 1199px) {
+    width: 500px;
+    padding: 24px;
+    border-radius: 32px;
+  }
+
+  @media (max-width: 767px) {
+    width: calc(100% - 24px);
+    max-width: 340px;
+    padding: 20px;
+    border-radius: 24px;
+  }
+
   form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 35px;
+    gap: 20px;
   }
+
   label {
+    width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    margin-bottom: 14px;
+    gap: 10px;
+    margin-bottom: 0;
+    left: 0;
+    position: static;
     font-family: "Montserrat", sans-serif;
     font-weight: 500;
     font-size: 16px;
-    position: relative;
-    left: -120px;
   }
+
   h3 {
-    margin: -10px 0 24px;
+    margin: 0 0 24px;
     text-align: center;
     font-weight: 500;
     font-size: 28px;
+
+    @media (max-width: 767px) {
+      font-size: 22px;
+    }
   }
 `;
 
 export const Input = styled.input`
-  width: 240%;
+  width: 100%;
   box-sizing: border-box;
   padding: 18px 16px;
   border: 1px solid #ccc;
@@ -125,6 +189,7 @@ export const Input = styled.input`
   font-family: "Montserrat", sans-serif;
   font-size: 14px;
   font-weight: 500;
+
   &:focus {
     outline: none;
     border-color: #ffb36c;
@@ -155,5 +220,37 @@ export const BottomText = styled.p`
   span {
     text-decoration: underline;
     cursor: pointer;
+  }
+`;
+
+export const BurgerButton = styled.button`
+  display: none;
+
+  @media (max-width: 767px) {
+    display: block;
+    margin-left: auto;
+    border: none;
+    background: transparent;
+    font-size: 30px;
+    cursor: pointer;
+  }
+`;
+
+export const MobileMenu = styled.div`
+  display: none;
+
+  @media (max-width: 767px) {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: white;
+    border-top: 1px solid #e5e5e5;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    z-index: 1000;
+    box-sizing: border-box;
   }
 `;

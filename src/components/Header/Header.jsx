@@ -14,6 +14,8 @@ import {
   Input,
   SubmitButton,
   BottomText,
+  BurgerButton,
+  MobileMenu,
 } from "./Header.styled";
 import logo from "../../img/logo.png";
 import userImg from "../../img/user.png";
@@ -28,6 +30,7 @@ const Header = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const savedUser = localStorage.getItem("user");
@@ -79,7 +82,41 @@ const Header = () => {
             </>
           )}
         </Actions>
+
+        <BurgerButton onClick={() => setMenuOpen(!menuOpen)}>☰</BurgerButton>
       </Container>
+
+      {menuOpen && (
+        <MobileMenu>
+          <NavLink href="#whoweare" onClick={() => setMenuOpen(false)}>
+            Who we are
+          </NavLink>
+
+          <NavLink href="#contacts" onClick={() => setMenuOpen(false)}>
+            Contacts
+          </NavLink>
+
+          <NavLink href="#menu" onClick={() => setMenuOpen(false)}>
+            Menu
+          </NavLink>
+
+          {!user ? (
+            <RegisterButton
+              onClick={() => {
+                setIsOpen(true);
+                setMenuOpen(false);
+              }}
+            >
+              Sign Up
+            </RegisterButton>
+          ) : (
+            <>
+              <UserName>{user.name}</UserName>
+              <Avatar src={userImg} alt="avatar" onClick={handleLogout} />
+            </>
+          )}
+        </MobileMenu>
+      )}
 
       {isOpen && (
         <ModalOverlay onClick={() => setIsOpen(false)}>
